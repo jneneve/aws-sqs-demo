@@ -1,0 +1,11 @@
+services:
+  localstack:
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"  # Edge port
+    environment:
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    volumes:
+      - "./init-aws.sh:/etc/localstack/init/ready.d/init-aws.sh" # ready hook
+      - "./volume:/var/lib/localstack"
